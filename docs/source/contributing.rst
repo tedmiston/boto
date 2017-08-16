@@ -156,8 +156,21 @@ Testing Supported Python Versions
 
 Boto supports python 2.6 and 2.7. An easy way to verify functionality
 across multiple python versions is to use tox_. A tox.ini file is included
-with boto.  You can run tox with no args and it will automatically test
-all supported python versions::
+with boto.
+
+Ensure the python versions in ``tox.ini`` are installed and activated using pyenv, for example, to install python 3.4.6::
+
+    pyenv install 3.4.6
+
+Repeat for each desired version.
+
+Then run this in the repo root to configure the required python versions in pyenv for tox::
+
+    pyenv local 2.6.9 2.7.13 3.3.6 3.4.6 3.5.3 3.6.1
+
+(This will create a ``.python-version`` file in the repo root directory.)
+
+You can run tox with no args and it will automatically test all supported python versions::
 
     $ tox
     GLOB sdist-make: boto/setup.py
